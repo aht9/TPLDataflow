@@ -73,3 +73,65 @@ foreach (var line in File.ReadLines("bigdata.csv").Skip(1))
 
 bufferBlock.Complete();
 await actionBlock.Completion;
+
+````
+
+---
+
+## 📊 Architecture Overview
+
+```text
+   CSV File
+      ↓
+  BufferBlock  (Queue)
+      ↓
+TransformBlock (Validation + Mapping)
+      ↓
+ ActionBlock   (Database Save / Final Step)
+```
+
+This structure mimics a real-world **ETL pipeline** and makes the system:
+
+* Scalable
+* Maintainable
+* Resilient to overloads
+
+---
+
+## 🚀 How to Run
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/yourusername/csv-dataflow-pipeline.git
+   ```
+2. Open the project in Visual Studio or Rider.
+3. Restore dependencies:
+
+   ```bash
+   dotnet restore
+   ```
+4. Run the application:
+
+   ```bash
+   dotnet run
+   ```
+
+---
+
+## 💡 Possible Extensions
+
+* Add multiple `TransformBlock`s for data cleaning, normalization, and enrichment.
+* Replace `SaveToDatabaseAsync` with a real database call (e.g., SQL Server via Dapper).
+* Implement error handling and retries in the pipeline.
+* Add real-time monitoring and metrics.
+
+---
+
+## 📜 License
+
+This project is licensed under the MIT License.
+
+```
+
+
